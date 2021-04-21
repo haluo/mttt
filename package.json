@@ -1,0 +1,24 @@
+{
+  "name": "mttt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haluo/mttt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haluo/mttt/issues"
+  },
+  "homepage": "https://github.com/haluo/mttt#readme",
+  "devDependencies": {
+    "electron": "^12.0.5",
+    "timer.js": "^1.0.4"
+  }
+}
