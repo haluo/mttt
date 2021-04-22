@@ -15,17 +15,19 @@ function startWork(sec){
 }
 
 function updateTime(ms){
+    ms = ms/1000;
     let timerContainer = document.querySelector('#timer-container')
-    let s = (ms/1000).toFixed(0);//秒
-    let ss = s % 60
-    let mm = (s/60).toFixed(0)
-    timerContainer.innerText = `${mm.toString().padStart(2,0)}:${ss.toString().padStart(2,0)}`;
+    let second = Math.floor(ms % 60); // 秒
+    let minute = Math.floor(ms % 3600 / 60); // 分
+    let hour = Math.floor(ms / 3600); // 时
+    timerContainer.innerText = `${hour.toString().padStart(2,0)}:${minute.toString().padStart(2,0)}:${second.toString().padStart(2,0)}`;
 }
 async function notification(){
     let res = await ipcRenderer.invoke('work-notification')
     if(res === 'rest'){
     }else if(res === 'work'){
-        startWork()
+        let timerInput = document.querySelector('#timer-input')
+        startWork(timerInput.value*60)
     }
 }
 window.onload = function(){
@@ -33,7 +35,7 @@ window.onload = function(){
     let timerInput = document.querySelector('#timer-input')
     timerBtn.onclick = ()=>{
         // console.log(timerInput.value)
-        startWork(timerInput.value)
+        startWork(timerInput.value*60)
     }
 };
 

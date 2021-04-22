@@ -2,15 +2,15 @@ const {app,BrowserWindow,Notification,dialog,ipcMain} = require('electron')
 let win = null;
 app.whenReady().then(()=>{
     win = new BrowserWindow({
-        width:700,
-        height:500,
+        width:300,
+        height:400,
         webPreferences:{
             nodeIntegration:true,
             contextIsolation:false,
             enableRemoteModule:true,
         }
     });
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
     win.loadFile("./index.html")
     win.on('close',()=>{win = null});
     handleIPC();
